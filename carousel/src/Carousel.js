@@ -29,25 +29,25 @@ import Card from "./Card";
   function goBackwards() {
     setCurrCardIdx(currCardIdx - 1);
   }
-
+  //consider changing visibility of i tags vs just not showing them to prevent shifting
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        <i
+        {currCardIdx !== 0 && <i
           className="bi bi-arrow-left-circle"
           onClick={goBackwards}
-        />
+        />}
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        <i
+        {currCardIdx < (total-1) && <i
           className="bi bi-arrow-right-circle"
           onClick={goForward}
-        />
+        />}
       </div>
     </div>
   );

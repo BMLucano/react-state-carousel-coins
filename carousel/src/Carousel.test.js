@@ -67,14 +67,6 @@ it("works when you click on the left arrow", function () {
   ).not.toBeInTheDocument();
 });
 
-// it("matches snapshot", function(){
-//   const { container } = render(
-//   <Carousel
-//     photos={TEST_IMAGES}
-//     title="test title"/>)
-//     expect(container).toMatchSnapshot();
-// })
-
 it('left arrow missing on first image', function () {
 
   const { container } = render(
@@ -89,7 +81,7 @@ it('left arrow missing on first image', function () {
   ).not.toBeInTheDocument();
 
   expect(
-    container.querySelector('.bi-arror-right-circle')
+    container.querySelector('.bi-arrow-right-circle')
   ).toBeInTheDocument();
 
 });
@@ -102,8 +94,12 @@ it('right arrow missing on last image', function () {
       title="images for testing"
     />
   );
+    //right arrow should show before arriving at last image
+    expect(
+      container.querySelector(".bi-arrow-right-circle")
+    ).toBeInTheDocument();
 
-
+    //move forward twice in the carousel
   const rightArrow = container.querySelector(".bi-arrow-right-circle");
   fireEvent.click(rightArrow);
   fireEvent.click(rightArrow);
@@ -125,7 +121,7 @@ it('both arrows show on second image', function () {
       title="images for testing"
     />
   );
-
+    //move forward in the carousel
   const rightArrow = container.querySelector('.bi-arrow-right-circle');
   fireEvent.click(rightArrow);
 
@@ -137,3 +133,10 @@ it('both arrows show on second image', function () {
 })
 
 
+it("matches snapshot", function(){
+  const { container } = render(
+  <Carousel
+    photos={TEST_IMAGES}
+    title="test title"/>)
+    expect(container).toMatchSnapshot();
+})

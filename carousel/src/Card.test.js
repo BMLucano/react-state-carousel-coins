@@ -9,12 +9,12 @@ it("renders without crashing", function(){
     totalNum={3} />)
 });
 
-// it("matches snapshot", function(){
-//   const { container } = render(
-//   <Card
-//     caption="this is caption"
-//     src='image1.jpg'
-//     currNum={1}
-//     totalNum={3} />)
-//     expect(container).toMatchSnapshot();
-// })
+it("matches snapshot", function(){
+  const { container } = render(
+  <Card
+    caption="this is caption"
+    src='image1.jpg'
+    currNum={1}
+    totalNum={3} />)
+    expect(container).toMatchSnapshot();
+})
